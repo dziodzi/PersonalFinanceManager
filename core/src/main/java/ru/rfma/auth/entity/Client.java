@@ -1,13 +1,8 @@
 package ru.rfma.auth.entity;
 
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import ru.rfma.auth.enums.Role;
-
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -21,14 +16,14 @@ public class Client {
     private int id;
 
     private String login;
-    private String password;
+    private char[] password;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
     public Client(String login, String password, Role role) {
         this.login = login;
-        this.password = password;
+        this.password = password.toCharArray();
         this.role = role;
     }
 
