@@ -3,6 +3,7 @@ package ru.rfma.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.rfma.services.CoreService;
@@ -15,6 +16,7 @@ public class CategoryController {
     private CoreService coreService;
 
     @PostMapping()
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<?> create(@RequestParam final String name, @RequestParam(required = false) final Float limit){
         try {
             return new ResponseEntity<>(this.coreService.createCategory(name, limit), HttpStatus.CREATED);
@@ -24,6 +26,7 @@ public class CategoryController {
     }
 
     @GetMapping("/byid")
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<?> get(@RequestParam final Integer id) {
         try {
             return new ResponseEntity<>(this.coreService.getCategoryById(id), HttpStatus.OK);
@@ -42,6 +45,7 @@ public class CategoryController {
     }
 
     @PostMapping("/updatelimit")
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<?> update(@RequestParam final Integer id, @RequestParam final Float limit) {
         try {
             return new ResponseEntity<>(this.coreService.updateCategoryLimit(id, limit), HttpStatus.OK);
@@ -51,6 +55,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("")
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<?> delete(@RequestParam final Integer id) {
         try {
             this.coreService.deleteCategory(id);
