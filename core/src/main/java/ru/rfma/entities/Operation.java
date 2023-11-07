@@ -1,19 +1,41 @@
 package ru.rfma.entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.lang.Nullable;
+import ru.rfma.enums.OperationType;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
-public abstract class Operation {
+public class Operation {
 
-    int id;
-    float amount;
-    Date date;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "amount")
+    private float amount;
+
+    @NonNull
+    @Column(name = "date")
+    private Date date;
     /**
      * Доп. информация
      */
-    String description;
+    @Nullable
+    @Column(name = "description")
+    private String description;
+
+    @NonNull
+    @Column(name = "operationType")
+    private OperationType operationType;
 }
