@@ -4,10 +4,7 @@ import lombok.*;
 import org.springframework.lang.Nullable;
 import ru.rfma.enums.OperationType;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -15,6 +12,7 @@ import java.util.Date;
 @Builder
 @Getter
 @Setter
+@Entity
 public class Operation {
 
     @Id

@@ -20,9 +20,10 @@ public class CoreService {
     private final OperationMapper operationMapper;
     private final CategoryMapper categoryMapper;
 
-    public CoreService(final CategoryRepository categoryRepository, final OperationRepository operationRepository,
-                       OperationMapper operationMapper,
-                       CategoryMapper categoryMapper) {
+    public CoreService(final CategoryRepository categoryRepository,
+                       final OperationRepository operationRepository,
+                       final OperationMapper operationMapper,
+                       final CategoryMapper categoryMapper) {
         this.categoryRepository = categoryRepository;
         this.operationRepository = operationRepository;
         this.operationMapper = operationMapper;
@@ -45,7 +46,7 @@ public class CoreService {
 
     public CategoryDto updateCategoryLimit(final Integer id, final Float limit) {
          final Category category = categoryRepository.getById(id);
-         category.setLimit(limit);
+         category.setSpendLimit(limit);
          categoryRepository.save(category);
          return categoryMapper.toDto(category);
     }

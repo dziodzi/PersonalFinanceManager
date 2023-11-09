@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.rfma.services.CoreService;
 
 
-@Controller("/category")
+@Controller
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired

@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.rfma.dto.OperationDto;
 import ru.rfma.services.CoreService;
 
-@Controller("/operation")
+@Controller
+@RequestMapping("/operation")
 public class OperationController {
 
     @Autowired
