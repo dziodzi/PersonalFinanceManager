@@ -6,10 +6,11 @@ services:
       POSTGRES_DB: "pfma"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
+      PGDATA: /data/postgres
     ports:
       - "5432:5432"
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - postgres:/data/postgres
     restart: unless-stopped
 
   pgadmin:
@@ -25,5 +26,5 @@ services:
       - pgadmin-data:/var/lib/pgadmin
 
 volumes:
-  db-data:
+  postgres:
   pgadmin-data:
