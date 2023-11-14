@@ -17,7 +17,6 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-//    @EventListener(ApplicationReadyEvent.class)
 //    public void triggerMail() throws MessagingException {
 //        senderService.sendSimpleEmail("finance.management.app@gmail.com",
 //                "This is email body",

@@ -10,19 +10,21 @@ public class EmailSenderService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendSimpleEmail(String toEmail,
-                                String subject,
-                                String body
-    ) {
+    public void sendSimpleEmail(final String toEmail, final String subject, final String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("finance.management.app@gmail.com");
         message.setTo(toEmail);
-        message.setText(body);
+        message.setText(text);
         message.setSubject(subject);
         mailSender.send(message);
-        System.out.println("Mail sent");
-
-
     }
 
+    public void sendNotification(final String toEmail, final String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("finance.management.app@gmail.com");
+        message.setTo(toEmail);
+        message.setText(text);
+        message.setSubject("Notification from finance management app");
+        mailSender.send(message);
+    }
 }
