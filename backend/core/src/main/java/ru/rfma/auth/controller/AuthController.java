@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.rfma.auth.dto.JwtRequest;
+import ru.rfma.auth.dto.JwtRequestReg;
 import ru.rfma.auth.dto.JwtResponse;
 import ru.rfma.auth.dto.RefreshJwtRequest;
 import ru.rfma.auth.service.AuthService;
@@ -27,8 +28,8 @@ public class AuthController {
     }
 
     @PostMapping("register")
-    public ResponseEntity<JwtResponse> register(@RequestBody JwtRequest authRequest) throws AuthException {
-        final JwtResponse token = authService.register(authRequest);
+    public ResponseEntity<JwtResponse> register(@RequestBody JwtRequestReg requestReg) throws AuthException {
+        final JwtResponse token = authService.register(requestReg);
         return ResponseEntity.ok(token);
     }
 
