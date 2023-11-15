@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.rfma.auth.dto.JwtRequest;
+import ru.rfma.auth.dto.JwtRequestReg;
 import ru.rfma.auth.dto.JwtResponse;
 import ru.rfma.auth.entity.Client;
 import ru.rfma.auth.entity.JwtAuthentication;
@@ -35,8 +36,8 @@ public class AuthService {
         }
     }
 
-    public JwtResponse register(@NonNull JwtRequest authRequest) throws AuthException {
-        final Client client = clientService.create(authRequest.getLogin(), authRequest.getPassword());
+    public JwtResponse register(@NonNull JwtRequestReg regRequest) throws AuthException {
+        final Client client = clientService.create(regRequest.getLogin(), regRequest.getPassword(), regRequest.getEmail());
         final String accessToken = jwtProvider.generateAccessToken(client);
         final String refreshToken = jwtProvider.generateRefreshToken(client);
         refreshStorage.put(client.getLogin(), refreshToken);
