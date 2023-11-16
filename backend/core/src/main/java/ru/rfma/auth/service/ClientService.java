@@ -20,9 +20,9 @@ public class ClientService {
         return clientRepository.findByLogin(login);
     }
 
-    public Client create(@NonNull String login, String password, String email){
+    public Client create(@NonNull String login, char[] password, String email, String name){
 
-        Client client = new Client(login, password, Role.USER, email);
+        Client client = new Client(login, password, Role.USER, email, name);
         clientRepository.save(client);
         return client;
     }

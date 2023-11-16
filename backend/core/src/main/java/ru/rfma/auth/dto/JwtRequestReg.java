@@ -9,6 +9,7 @@ public class JwtRequestReg {
 
     private String login;
     private String email;
-    private String password;
+    private char[] password;
+    private String name;
 
 }
