@@ -4,12 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import ru.rfma.auth.dto.JwtRequest;
-import ru.rfma.auth.dto.JwtRequestReg;
-import ru.rfma.auth.dto.JwtResponse;
-import ru.rfma.auth.dto.RefreshJwtRequest;
+import ru.rfma.auth.dto.*;
 import ru.rfma.auth.service.AuthService;
 import ru.rfma.auth.service.ClientService;
+import ru.rfma.auth.utils.VerificationCode;
 
 import javax.security.auth.message.AuthException;
 
@@ -20,6 +18,7 @@ public class AuthController {
 
     private final AuthService authService;
     private final ClientService clientService;
+    private VerificationCode codeGenerator;
 
     @PostMapping("login")
     public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest authRequest) throws AuthException {
@@ -50,5 +49,10 @@ public class AuthController {
         final JwtResponse token = authService.refresh(request.getRefreshToken());
         return ResponseEntity.ok(token);
     }
+    @GetMapping("code")
+    public int getCode(@RequestBody JwtRequestEmail requestEmail) throws AuthException {
+        return codeGenerator.createCode();
+    }
+
 
 }
