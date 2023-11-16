@@ -18,15 +18,17 @@ public class Client {
     private String login;
     private char[] password;
     private String email;
+    private String name;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public Client(String login, String password, Role role, String email) {
+    public Client(String login, char[] password, Role role, String email, String name) {
         this.login = login;
-        this.password = password.toCharArray();
+        this.password = password;
         this.role = role;
         this.email = email;
+        this.name = name;
     }
 
     public void setAdmin(){

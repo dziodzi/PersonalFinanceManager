@@ -37,7 +37,7 @@ public class AuthService {
     }
 
     public JwtResponse register(@NonNull JwtRequestReg regRequest) throws AuthException {
-        final Client client = clientService.create(regRequest.getLogin(), regRequest.getPassword(), regRequest.getEmail());
+        final Client client = clientService.create(regRequest.getLogin(), regRequest.getPassword(), regRequest.getEmail(), regRequest.getName());
         final String accessToken = jwtProvider.generateAccessToken(client);
         final String refreshToken = jwtProvider.generateRefreshToken(client);
         refreshStorage.put(client.getLogin(), refreshToken);
