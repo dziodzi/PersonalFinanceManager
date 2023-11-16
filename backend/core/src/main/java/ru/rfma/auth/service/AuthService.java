@@ -13,6 +13,7 @@ import ru.rfma.auth.entity.JwtAuthentication;
 import ru.rfma.auth.providers.JwtProvider;
 
 import javax.security.auth.message.AuthException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +27,8 @@ public class AuthService {
 
     public JwtResponse login(@NonNull JwtRequest authRequest) throws AuthException {
         final Client client = clientService.getByLogin(authRequest.getLogin());
-        if (client.getPassword().equals(authRequest.getPassword())) {
+
+        if (Arrays.equals(client.getPassword(), authRequest.getPassword())) {
             final String accessToken = jwtProvider.generateAccessToken(client);
             final String refreshToken = jwtProvider.generateRefreshToken(client);
             refreshStorage.put(client.getLogin(), refreshToken);
@@ -36,7 +38,7 @@ public class AuthService {
         }
     }
 
-    public JwtResponse register(@NonNull JwtRequestReg regRequest) throws AuthException {
+    public JwtResponse register(@NonNull JwtRequestReg regRequest) {
         final Client client = clientService.create(regRequest.getLogin(), regRequest.getPassword(), regRequest.getEmail(), regRequest.getName());
         final String accessToken = jwtProvider.generateAccessToken(client);
         final String refreshToken = jwtProvider.generateRefreshToken(client);
