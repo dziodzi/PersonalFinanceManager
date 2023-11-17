@@ -34,10 +34,25 @@ public class Operation {
     private String description;
 
     @NonNull
-    @Column(name = "operationType")
+    @Column(name = "operation_type")
     private OperationType operationType;
 
     @Nullable
-    @Column(name="categoryId")
+    @Column(name="category_id")
     private int categoryId;
+
+    @NonNull
+    @Column(name = "user_id")
+    private int userId;
+
+    public Operation(final Float amount, final Date date,
+                     final String description, final OperationType operationType,
+                     final int categoryId, final int userId) {
+        this.amount = amount;
+        this.date = date;
+        this.description= description;
+        this.operationType=operationType;
+        this.categoryId = categoryId;
+        this.userId = userId;
+    }
 }

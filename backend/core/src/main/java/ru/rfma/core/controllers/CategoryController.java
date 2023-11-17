@@ -18,9 +18,9 @@ public class CategoryController {
 
     @PostMapping()
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
-    public ResponseEntity<?> create(@RequestParam final String name, @RequestParam(required = false) final Float limit){
+    public ResponseEntity<?> create(@RequestParam final String name, @RequestParam(required = false) final Float limit, @RequestParam final int userId){
         try {
-            return new ResponseEntity<>(this.coreServiceImpl.createCategory(name, limit), HttpStatus.CREATED);
+            return new ResponseEntity<>(this.coreServiceImpl.createCategory(name, limit, userId), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
