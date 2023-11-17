@@ -1,29 +1,29 @@
-package ru.rfma.services;
+package ru.rfma.core.services;
 
 import org.springframework.stereotype.Service;
-import ru.rfma.dto.CategoryDto;
-import ru.rfma.dto.OperationDto;
-import ru.rfma.entities.Category;
-import ru.rfma.entities.Operation;
-import ru.rfma.mapper.CategoryMapper;
-import ru.rfma.mapper.OperationMapper;
-import ru.rfma.repo.CategoryRepository;
-import ru.rfma.repo.OperationRepository;
+import ru.rfma.core.dto.CategoryDto;
+import ru.rfma.core.entities.Category;
+import ru.rfma.core.entities.Operation;
+import ru.rfma.core.dto.OperationDto;
+import ru.rfma.core.mapper.CategoryMapper;
+import ru.rfma.core.mapper.OperationMapper;
+import ru.rfma.core.repo.CategoryRepository;
+import ru.rfma.core.repo.OperationRepository;
 
 import java.util.List;
 
 @Service
-public class CoreService {
+public class CoreServiceImpl {
     private final CategoryRepository categoryRepository;
 
     private final OperationRepository operationRepository;
     private final OperationMapper operationMapper;
     private final CategoryMapper categoryMapper;
 
-    public CoreService(final CategoryRepository categoryRepository,
-                       final OperationRepository operationRepository,
-                       final OperationMapper operationMapper,
-                       final CategoryMapper categoryMapper) {
+    public CoreServiceImpl(final CategoryRepository categoryRepository,
+                           final OperationRepository operationRepository,
+                           final OperationMapper operationMapper,
+                           final CategoryMapper categoryMapper) {
         this.categoryRepository = categoryRepository;
         this.operationRepository = operationRepository;
         this.operationMapper = operationMapper;

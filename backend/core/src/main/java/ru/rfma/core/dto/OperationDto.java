@@ -1,10 +1,10 @@
-package ru.rfma.dto;
+package ru.rfma.core.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.rfma.enums.OperationType;
+import ru.rfma.core.enums.OperationType;
 
 import java.util.Date;
 
@@ -20,4 +20,5 @@ public class OperationDto {
     private String description;
 
     private OperationType operationType;
+    private int categoryId;
 }

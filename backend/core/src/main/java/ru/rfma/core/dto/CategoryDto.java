@@ -1,4 +1,4 @@
-package ru.rfma.dto;
+package ru.rfma.core.dto;
 
 import lombok.Getter;
 import lombok.Setter;

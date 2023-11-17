@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.rfma.auth.entity.Client;
 import ru.rfma.auth.enums.Role;
 import ru.rfma.auth.repository.ClientRepository;
-import ru.rfma.util.FieldValidator;
+import ru.rfma.core.util.FieldValidator;
 
 @Service
 public class ClientService {

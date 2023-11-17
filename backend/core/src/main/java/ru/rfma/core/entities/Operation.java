@@ -1,8 +1,8 @@
-package ru.rfma.entities;
+package ru.rfma.core.entities;
 
 import lombok.*;
 import org.springframework.lang.Nullable;
-import ru.rfma.enums.OperationType;
+import ru.rfma.core.enums.OperationType;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -36,4 +36,8 @@ public class Operation {
     @NonNull
     @Column(name = "operationType")
     private OperationType operationType;
+
+    @Nullable
+    @Column(name="categoryId")
+    private int categoryId;
 }

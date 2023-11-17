@@ -1,4 +1,4 @@
-package ru.rfma.entities;
+package ru.rfma.core.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

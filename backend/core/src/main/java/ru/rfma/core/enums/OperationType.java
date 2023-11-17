@@ -1,6 +1,6 @@
-package ru.rfma.enums;
+package ru.rfma.core.enums;
 
 public enum OperationType {
     Income,
-    Outcome;
+    Expense;
 }
