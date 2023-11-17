@@ -21,8 +21,14 @@ public class Category {
     @Column(name = "spendLimit")
     private Float spendLimit;
 
-    public Category(final String name, final Float spendLimit) {
+    @NonNull
+    @Column(name = "user_id")
+    private int userId;
+
+    public Category(final String name, final Float spendLimit, final int userId) {
         this.name = name;
         this.spendLimit = spendLimit;
+        this.userId = userId;
     }
+
 }

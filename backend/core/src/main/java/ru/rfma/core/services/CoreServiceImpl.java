@@ -30,8 +30,8 @@ public class CoreServiceImpl {
         this.categoryMapper = categoryMapper;
     }
 
-    public CategoryDto createCategory(final String name, final Float limit) {
-        Category category = new Category(name, limit);
+    public CategoryDto createCategory(final String name, final Float limit, final int userId) {
+        Category category = new Category(name, limit, userId);
         categoryRepository.save(category);
         return categoryMapper.toDto(category);
     }
