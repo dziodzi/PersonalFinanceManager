@@ -19,22 +19,6 @@ public class StatisticServiceImpl {
         this.operationRepository = operationRepository;
     }
 
-    public static void updateValueCategoryMap(Map<Category, Float> map, Category key, Float value) {
-        if (map.containsKey(key)) {
-            map.put(key, map.get(key) + value);
-        } else {
-            map.put(key, value);
-        }
-    }
-
-    public static void updateValueDateMap(Map<Date, Float> map, Date key, Float value) {
-        if (map.containsKey(key)) {
-            map.put(key, map.get(key) + value);
-        } else {
-            map.put(key, value);
-        }
-    }
-
     public Map<Category, Float> getExpensesPerCategory() {
         Map<Category, Float> map = new HashMap<>();
         List<Category> categories = categoryRepository.findAll();
@@ -59,32 +43,46 @@ public class StatisticServiceImpl {
         return map;
     }
 
-    public Map<Date, Float> getExpensesPerMonth() {
-        Map<Date, Float> map = new HashMap<>();
+    public Map<Integer, Float> getExpensesPerMonth() {
+        Map<Integer, Float> map = new HashMap<>();
         List<Operation> operations = operationRepository.getOperationsByOperationType(OperationType.Expense);
         for (Operation operation : operations) {
-            updateValueDateMap(map, operation.getDate(), operation.getAmount());
+            updateValueDateMap(map, operation.getDate().getMonth(), operation.getAmount());
         }
         return map;
     }
 
-    public Map<Date, Float> getProfitPerMonth() {
-        Map<Date, Float> map = new HashMap<>();
+    public Map<Integer, Float> getProfitPerMonth() {
+        Map<Integer, Float> map = new HashMap<>();
         List<Operation> operations = operationRepository.findAll();
         for (Operation operation : operations) {
-            if (map.containsKey(operation.getDate())) {
+            if (map.containsKey(operation.getDate().getMonth())) {
                 if (operation.getOperationType() == OperationType.Income) {
-                    map.put(operation.getDate(), map.get(operation.getDate()) + operation.getAmount());
+                    map.put(operation.getDate().getMonth(), map.get(operation.getDate().getMonth()) + operation.getAmount());
                 } else {
-                    map.put(operation.getDate(), map.get(operation.getDate()) - operation.getAmount());
+                    map.put(operation.getDate().getMonth(), map.get(operation.getDate().getMonth()) - operation.getAmount());
                 }
             } else {
-                map.put(operation.getDate(), operation.getAmount());
+                map.put(operation.getDate().getMonth(), operation.getAmount());
             }
         }
         return map;
 
     }
+    private static void updateValueCategoryMap(Map<Category, Float> map, Category key, Float value) {
+        if (map.containsKey(key)) {
+            map.put(key, map.get(key) + value);
+        } else {
+            map.put(key, value);
+        }
+    }
 
+    private static void updateValueDateMap(Map<Integer, Float> map, int key, Float value) {
+        if (map.containsKey(key)) {
+            map.put(key, map.get(key) + value);
+        } else {
+            map.put(key, value);
+        }
+    }
 
 }
