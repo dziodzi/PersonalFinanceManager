@@ -1,4 +1,4 @@
-package ru.rfma.dto;
+package ru.rfma.core.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,4 +8,5 @@ import lombok.Setter;
 public class CategoryDto {
     private String name;
     private float limit;
+    private int user_id;
 }

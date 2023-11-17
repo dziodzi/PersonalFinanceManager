@@ -1,9 +1,9 @@
-package ru.rfma.mapper;
+package ru.rfma.core.mapper;
 
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
-import ru.rfma.dto.CategoryDto;
-import ru.rfma.entities.Category;
+import ru.rfma.core.dto.CategoryDto;
+import ru.rfma.core.entities.Category;
 
 import java.util.List;
 

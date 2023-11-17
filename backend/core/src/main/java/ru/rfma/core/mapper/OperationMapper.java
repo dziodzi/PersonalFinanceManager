@@ -1,9 +1,9 @@
-package ru.rfma.mapper;
+package ru.rfma.core.mapper;
 
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
-import ru.rfma.dto.OperationDto;
-import ru.rfma.entities.Operation;
+import ru.rfma.core.dto.OperationDto;
+import ru.rfma.core.entities.Operation;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package ru.rfma.util;
+package ru.rfma.core.util;
 
 public class FieldValidator {
     public static Integer validateId(String id) throws Exception {
