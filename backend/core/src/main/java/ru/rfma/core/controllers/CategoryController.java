@@ -16,6 +16,12 @@ public class CategoryController {
     @Autowired
     private CoreServiceImpl coreServiceImpl;
 
+    @GetMapping("/getAll")
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+    public ResponseEntity<?> getAll() {
+        return new ResponseEntity<>(coreService.getAllCategories(), HttpStatus.OK);
+    }
+
     @PostMapping()
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<?> create(@RequestParam final String name, @RequestParam(required = false) final Float limit, @RequestParam final int userId){

@@ -1,9 +1,6 @@
 <template>
     <NavBar/>
-
-    <main class="form-signin">
-        <router-view/>
-    </main>
+    <router-view/>
 </template>
 
 <script>

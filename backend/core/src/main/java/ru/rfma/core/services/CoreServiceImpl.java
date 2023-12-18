@@ -36,6 +36,10 @@ public class CoreServiceImpl {
         return categoryMapper.toDto(category);
     }
 
+    public List<CategoryDto> getAllCategories() {
+        return categoryMapper.toDtos(categoryRepository.findAll());
+    }
+
     public CategoryDto getCategoryById(final Integer id) {
         return categoryMapper.toDto(categoryRepository.getById(id));
     }
@@ -67,8 +71,7 @@ public class CoreServiceImpl {
     }
 
     public List<OperationDto> getAllOperations() {
-        List<Operation> operationList = operationRepository.findAll();
-        return operationMapper.toDtos(operationList);
+        return operationMapper.toDtos(operationRepository.findAll());
     }
 
     public void deleteOperationById(final Integer id) {
