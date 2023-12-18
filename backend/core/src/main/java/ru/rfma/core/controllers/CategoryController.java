@@ -19,7 +19,7 @@ public class CategoryController {
     @GetMapping("/getAll")
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public ResponseEntity<?> getAll() {
-        return new ResponseEntity<>(coreService.getAllCategories(), HttpStatus.OK);
+        return new ResponseEntity<>(coreServiceImpl.getAllCategories(), HttpStatus.OK);
     }
 
     @PostMapping()

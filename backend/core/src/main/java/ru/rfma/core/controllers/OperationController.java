@@ -1,4 +1,4 @@
-package ru.rfma.controllers;
+package ru.rfma.core.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -6,15 +6,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import ru.rfma.dto.OperationDto;
-import ru.rfma.services.CoreService;
+import ru.rfma.core.dto.OperationDto;
+import ru.rfma.core.services.CoreServiceImpl;
 
 @Controller
 @RequestMapping("/operation")
 public class OperationController {
 
     @Autowired
-    private CoreService coreService;
+    private CoreServiceImpl coreService;
 
     @GetMapping("/getAll")
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
