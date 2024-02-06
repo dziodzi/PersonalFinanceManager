@@ -29,8 +29,7 @@ router.beforeEach((to, from, next) => {
 
     if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
         next('/login');
-    } else if (to.matched.some(record => record.meta.guest) && isAuthenticated) {
-        next('/');
+        next();
     } else {
         next();
     }

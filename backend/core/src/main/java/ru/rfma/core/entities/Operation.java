@@ -41,18 +41,23 @@ public class Operation {
     @Column(name="category_id")
     private int categoryId;
 
+    @Nullable
+    @Column(name="category_name")
+    private String categoryName;
+
     @NonNull
     @Column(name = "user_id")
     private int userId;
 
     public Operation(final Float amount, final Date date,
                      final String description, final OperationType operationType,
-                     final int categoryId, final int userId) {
+                     final int categoryId, final String categoryName, final int userId) {
         this.amount = amount;
         this.date = date;
         this.description= description;
         this.operationType=operationType;
         this.categoryId = categoryId;
+        this.categoryName = categoryName;
         this.userId = userId;
     }
 }

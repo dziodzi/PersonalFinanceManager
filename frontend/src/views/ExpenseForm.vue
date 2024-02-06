@@ -3,8 +3,8 @@
     <form @submit.prevent="saveExpense">
       <div class="mb-3">
         <label for="categoryDropdown" class="form-label">Выберите категорию:</label>
-        <select class="form-select" id="categoryDropdown" v-model="selectedCategory">
-          <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+        <select @click="fetchData" class="form-select" id="categoryDropdown" v-model="selectedCategory">
+          <option v-for="category in categories" :key="category.id" :value="category.name">{{ category.name }}, id: {{ category.id }}</option>
         </select>
       </div>
       <div class="mb-3">
@@ -24,42 +24,50 @@
 
 //TODO: Auth check
 
-import { reactive } from "vue";
 import * as api from '@/api';
 
 export default {
-  props: {
-    categories: Array,
-  },
+
   data() {
     return {
-      selectedCategory: null,
+      selectedCategory: '',
       expenseAmount: null,
       showAlert: false,
+      categories: [],
     };
   },
   methods: {
 
-    saveExpense() {
-      const data = reactive({
-        operationType: '',
-        amount: '',
+    async fetchData() {
+      const data = await api.categories.getAll();
+
+      console.log(data);
+
+      this.categories = data.map(category => ({
+        id: category.id,
+        name: category.name,
+        spendLimit: category.spendLimit,
+        originalName: "",
+      }));
+    },
+
+    async saveExpense() {
+      const data = ({
+        amount: this.expenseAmount, date: new Date(),
+        description: 'myExpense',
+        operationType: 'Expense',
+        categoryName: this.selectedCategory,
+        userId: '1',
       });
 
-      const submit = async () => {
-        await api.operations.create(data);
-      }
+      await api.operations.create(data);
+
 
       this.showAlert = true;
 
       setTimeout(() => {
         this.showAlert = false;
       }, 2000);
-
-      return {
-        data,
-        submit
-      }
     }
   },
 };

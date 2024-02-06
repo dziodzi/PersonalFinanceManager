@@ -21,5 +21,6 @@ public class OperationDto {
 
     private OperationType operationType;
     private int categoryId;
-    private int user_id;
+    private String categoryName;
+    private int userId;
 }

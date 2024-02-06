@@ -5,6 +5,7 @@ import store from './store/index.js'
 
 store.dispatch('initializeStore');
 
+
 createApp(App)
     .use(router)
     .use(store)

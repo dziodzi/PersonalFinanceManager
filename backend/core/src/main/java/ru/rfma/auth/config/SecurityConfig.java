@@ -1,6 +1,5 @@
 package ru.rfma.auth.config;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +29,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .cors() // Enable CORS
+                .and()
                 .authorizeHttpRequests(
                         authz -> authz
                                 .antMatchers("/api/auth/login", "/api/auth/token", "/api/auth/register", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
@@ -42,7 +43,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("*");
+        configuration.addAllowedOrigin("http://localhost:8081"); // Replace with your actual origin
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);
@@ -52,5 +53,4 @@ public class SecurityConfig {
 
         return source;
     }
-
 }

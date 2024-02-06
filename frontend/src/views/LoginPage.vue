@@ -1,12 +1,12 @@
 <template>
     <form @submit.prevent="submit" class="form-signin">
-        <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+        <h1 class="h3 mb-3 fw-normal">Вход</h1>
 
-        <input v-model="data.login" type="text" class="form-control" placeholder="Login" required>
+        <input v-model="data.login" type="text" class="form-control" placeholder="Логин" required>
 
-        <input v-model="data.password" type="password" class="form-control" placeholder="Password" required>
+        <input v-model="data.password" type="password" class="form-control" placeholder="Пароль" required>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
 
         <div v-if="showAlert" class="alert alert-danger mt-3 show" role="alert">
           Authentication Error
@@ -36,7 +36,7 @@ export default {
       const submit = async () => {
         try {
           const response = await api.auth.login(data)
-
+          console.log(response);
           const { accessToken } = response;
 
           await store.dispatch('login', accessToken);

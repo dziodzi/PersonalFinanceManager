@@ -97,19 +97,20 @@
         <table class="table table-success table-striped">
           <thead>
           <tr>
+            <th>Категория</th>
             <th>Дата</th>
             <th>Сумма</th>
-            <th>Тип операции</th>
           </tr>
           </thead>
           <tbody>
           <tr v-for="operation in filteredOperations" :key="operation.id">
+            <td>{{ operation.categoryName }}</td>
             <td style="width: 27%">{{ operation.date }}</td>
             <td style="width: 18%">{{ operation.amount }}</td>
-            <td>{{ operation.type }}</td>
           </tr>
           </tbody>
         </table>
+        <button @click="fetchData" class="w-100 btn btn-lg btn-primary" type="submit">Обновить</button>
       </div>
     </div>
   </div>
@@ -156,19 +157,27 @@ export default {
         const searchCondition =
             !this.searchQuery ||
             operation.date.includes(this.searchQuery) ||
-            operation.type.includes(this.searchQuery);
+            operation.categoryName.includes(this.searchQuery);
 
         return dateCondition && amountCondition && searchCondition;
       });
     },
   },
   methods: {
-   // applyFilters() {
-      // Реализация применения фильтров
-   // },
+    applyFilters() {
+    },
 
-    async fetchOperations() {
-      this.operations = await api.operations.getAll()
+    async fetchData() {
+      var data = await api.operations.getAll();
+
+      console.log(data);
+
+      this.operations = data.map(operation => ({
+        amount: operation.amount,
+        type: operation.operationType,
+        categoryName: operation.categoryName,
+        date: operation.date,
+      }));
     },
   },
 }

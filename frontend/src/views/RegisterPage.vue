@@ -1,16 +1,16 @@
 <template>
     <form @submit.prevent="submit" class="form-signin">
-        <h1 class="h3 mb-3 fw-normal">Sign up</h1>
+        <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
 
-        <input v-model="data.name" class="form-control" placeholder="Name" required>
+        <input v-model="data.name" class="form-control" placeholder="Имя" required>
 
-        <input v-model="data.login" class="form-control" placeholder="Login" required>
+        <input v-model="data.login" class="form-control" placeholder="Логин" required>
 
-        <input v-model="data.email" type="email" class="form-control" placeholder="Email" required>
+        <input v-model="data.email" type="email" class="form-control" placeholder="Эл. почта" required>
 
-        <input v-model="data.password" type="password" class="form-control" placeholder="Password" required>
+        <input v-model="data.password" type="password" class="form-control" placeholder="Пароль" required>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+        <button class="w-100 btn btn-primary" type="submit">Зарегистрироваться</button>
 
         <div v-if="showSuccessAlert" class="alert alert-success mt-3 show" role="alert">
           Registration Success

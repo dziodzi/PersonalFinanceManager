@@ -12,13 +12,13 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Setter(AccessLevel.NONE)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "spendLimit")
+    @Column(name = "spend_limit")
     private Float spendLimit;
 
     @NonNull
