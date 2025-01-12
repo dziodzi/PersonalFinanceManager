@@ -1,18 +1,13 @@
-# Управление личными финансами
+# Personal Finance Manager Application
 
-- ### Бюджетирование и отслеживание расходов
-  Приложение позволяет пользователям создавать бюджеты, задавать категории расходов и устанавливать лимиты на каждую из них. Оно также позволяет вручную отслеживать все финансовые транзакции, включая расходы и доходы.
-- ### Анализ финансов
-  Приложение предоставляет пользовательскую аналитику и отчеты о финансовом состоянии. Это позволяет пользователям более глубоко понимать свои финансы, выявлять тенденции и принимать информированные финансовые решения.
-- ### Уведомления и напоминания
-  Пользователь сможет вручную добавлять напоминания о предстоящих платежах и других финансовых обязательствах, чтобы не пропустить важные даты. 
-- ### Образовательные ресурсы
-  Помимо управления финансами, приложение может предоставлять образовательные материалы и советы по финансовой грамотности, помогая пользователям развивать свои финансовые навыки. \
-  \
-  _Таким образом, приложение "Управление личными финансами" может помочь пользователям лучше контролировать свои финансы, снижать финансовый стресс, увеличивать сбережения и работать над достижением своих долгосрочных финансовых целей._
+### Budgeting and Expense Tracking
+The app allows users to create budgets, set expenses by category, and save limits for each of them. It also allows manual control of all financial expenses, expenses, and income.
 
+### Financial Analysis
+The app provides the user with analytics and reports on their financial status. This allows users to understand their finances more deeply, identify changes, and make informed financial decisions.
 
+### Notifications and Reminders
+The user can manually add notifications about upcoming payments and other financial obligations to avoid disclosing important dates.
 
-
-
-
+### Educational Resources
+In addition to financial management, the app can contain educational materials and financial literacy tips to help professionals develop their financial skills. \
